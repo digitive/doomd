@@ -8,6 +8,7 @@
 ;; Global settings (defaults)
 (setq doom-themes-enable-bold nil    ; if nil, bold is universally disabled
       doom-themes-enable-italic nil) ; if nil, italics is universally disabled
+(setq doom-font (font-spec :family "MesloLGS NF" :size 12))
 
 ;; Load the theme (doom-one, doom-molokai, etc); keep in mind that each theme
 ;; may have their own settings.
