@@ -26,3 +26,6 @@
 (doom-themes-org-config)
 (setq projectile-project-search-path '("~/src"))
 (setq doom-themes-treemacs-enable-variable-pitch nil)
+
+(global-set-key (kbd "<f9>") 'next-buffer)
+(global-set-key (kbd "<f10>") 'previous-buffer)
