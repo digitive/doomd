@@ -30,5 +30,9 @@
 
 (global-set-key (kbd "<f9>") 'next-buffer)
 (global-set-key (kbd "<f10>") 'previous-buffer)
-(custom-set-variables '(helm-ag-base-command "rg --no-heading"))
+(custom-set-variables
+  '(helm-ag-base-command "ag --nocolor --nogroup --ignore-case")
+  '(helm-ag-insert-at-point 'word)
+)
 
+(global-set-key (kbd "C-<f2>") 'helm-ag)
