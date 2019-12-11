@@ -36,3 +36,28 @@
 )
 
 (global-set-key (kbd "C-<f2>") 'helm-ag)
+(setq dired-dwim-target t)
+
+(def-package! org-super-agenda
+  :after org-agenda
+  :init
+  (setq org-super-agenda-groups '((:name "Today"
+                                         :time-grid t
+                                         :scheduled today)
+                                  (:name "Due today"
+                                         :deadline today)
+                                  (:name "Important"
+                                         :priority "A")
+                                  (:name "Over due"
+                                         :deadline past)
+                                  (:name "Due soon"
+                                         :deadline future)
+                                  (:name "Big Outcomes"
+                                         :tag "bo")))
+  :config
+  (org-super-agenda-mode)
+)
+
+(require 'company)
+(setq company-idle-delay 0.2
+      company-minimum-prefix-length 3)
