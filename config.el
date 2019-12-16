@@ -1,6 +1,9 @@
 ;;; .doom.d/config.el -*- lexical-binding: t; -*-
 
 ;; Place your private configuration here
+(setq gc-cons-threshold 50000000)
+(setq large-file-warning-threshold 100000000)
+
 (setq display-line-numbers-type 'relative)
 
 (require 'doom-themes)
@@ -61,3 +64,11 @@
 (setq company-idle-delay 0.2
       company-minimum-prefix-length 3)
 
+;; Golang compile
+(defun my-go-mode-hook()
+  (setq compilation-read-command nil)
+  (setq compile-command "go build && go test && go test")
+  (setq projectile-project-compilation-cmd "go install ./cmd/...")
+  (local-set-key (kbd "s-b") 'projectile-compile-project)
+  )
+(add-hook 'go-mode-hook 'my-go-mode-hook)
