@@ -42,7 +42,7 @@
 (global-set-key (kbd "C-<f2>") 'helm-ag)
 (setq dired-dwim-target t)
 
-(def-package! org-super-agenda
+(use-package! org-super-agenda
   :after org-agenda
   :init
   (setq org-super-agenda-groups '((:name "Today"
@@ -73,3 +73,5 @@
   (local-set-key (kbd "s-b") 'projectile-compile-project)
   )
 (add-hook 'go-mode-hook 'my-go-mode-hook)
+(setq tab-width 4)
+(setq confirm-kill-emacs nil)
