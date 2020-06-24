@@ -98,3 +98,4 @@
 (add-hook 'go-mode-hook 'my-go-mode-hook)
 (setq tab-width 4)
 (setq confirm-kill-emacs nil)
+(put 'narrow-to-region 'disabled nil)
