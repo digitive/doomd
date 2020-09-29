@@ -1,2 +1,0 @@
-# doomd
-Doom emacs config
