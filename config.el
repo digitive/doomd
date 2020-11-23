@@ -61,6 +61,9 @@
       doom-themes-enable-italic nil) ; if nil, italics is universally disabled
 (setq doom-font (font-spec :family "MesloLGS NF" :size 14))
 
+(set-fringe-mode 15)
+(setq confirm-kill-emacs nil)
+
 ;; Enable flashing mode-line on errors
 (doom-themes-visual-bell-config)
 
@@ -82,7 +85,7 @@
   '(helm-ag-insert-at-point 'word)
 )
 
-(global-set-key (kbd "C-<f2>") 'helm-ag)
+(global-set-key (kbd "M-n") 'helm-ag-project-root)
 (setq dired-dwim-target t)
 
 (setq company-idle-delay 0.2
@@ -96,6 +99,18 @@
   (local-set-key (kbd "s-b") 'projectile-compile-project)
   )
 (add-hook 'go-mode-hook 'my-go-mode-hook)
-(setq tab-width 4)
-(setq confirm-kill-emacs nil)
 (put 'narrow-to-region 'disabled nil)
+
+(dap-mode 1)
+;; The modes below are optional
+(dap-ui-mode 1)
+;; enables mouse hover support
+(dap-tooltip-mode 1)
+;; use tooltips for mouse hover
+;; if it is not enabled `dap-mode' will use the minibuffer.
+(tooltip-mode 1)
+;; displays floating panel with debug buttons
+;; requies emacs 26+
+(dap-ui-controls-mode 1)
+
+(require 'dap-go)
