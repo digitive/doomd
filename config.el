@@ -64,6 +64,14 @@
 (set-fringe-mode 15)
 (setq confirm-kill-emacs nil)
 
+(defun insert-current-date () (interactive)
+       (insert (shell-command-to-string "echo -n $(date +%Y-%m-%d)")))
+
+(after! evil
+  (setq evil-disable-insert-state-bindings t)
+  (define-key evil-insert-state-map (kbd "C-c d") 'insert-current-date)
+  (define-key evil-insert-state-map (kbd "C-c v") 'put-ticket-no))
+
 ;; Enable flashing mode-line on errors
 (doom-themes-visual-bell-config)
 
@@ -114,3 +122,26 @@
 (dap-ui-controls-mode 1)
 
 (require 'dap-go)
+
+(after! go-mode
+  (setq gofmt-command "goimports")
+  (add-hook 'go-mode-hook
+            (lambda ()
+              (add-hook 'after-save-hook 'gofmt nil 'make-it-local))))
+
+(defun put-ticket-no ()
+  (interactive)
+  (insert (shell-command-to-string "curticket")))
+
+(global-set-key
+  (kbd "C-c C-v")
+  'put-ticket-no
+  )
+
+;;Exit insert mode by pressing j and then j quickly
+(setq key-chord-two-keys-delay 0.5)
+(key-chord-define evil-insert-state-map "jj" 'evil-normal-state)
+(key-chord-mode 1)
+
+
+(evil-global-set-key 'insert (kbd "C-c C-d") 'insert-current-date)

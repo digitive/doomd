@@ -50,3 +50,4 @@
 ;(unpin! t)
 (package! helm-ag)
 (package! dap-mode)
+(package! key-chord)
