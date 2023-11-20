@@ -78,3 +78,12 @@
 (setq display-line-numbers-type 'relative)
 (setq doom--hl-line-mode 1)
 (menu-bar-mode t)
+(setq ediff-split-window-function 'split-window-horizontally)
+(setq ediff-window-setup-function 'ediff-setup-windows-plain)
+
+;; accept completion from copilot and fallback to company
+(use-package! copilot
+  :hook (prog-mode . copilot-mode)
+  :bind (:map copilot-completion-map
+              ("C-i" . 'copilot-accept-completion)
+              ))
